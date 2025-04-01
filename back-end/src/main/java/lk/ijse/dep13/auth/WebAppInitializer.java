@@ -3,6 +3,11 @@ package lk.ijse.dep13.auth;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+
+    public WebAppInitializer() throws ClassNotFoundException {
+        Class.forName("org.postgresql.Driver");
+    }
+
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class[]{WebRootConfig.class};
