@@ -8,7 +8,7 @@ const routes: Routes = [
         index: true,
         loader: async ()=>{
             const response =
-                await fetch('http://localhost:8080/app/clients');
+                await fetch('http://localhost:8080/app/clients', {credentials: 'include'});
             if (response.status === 200){
                 //
             }else{

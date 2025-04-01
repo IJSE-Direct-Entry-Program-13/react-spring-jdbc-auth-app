@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(allowCredentials = "true", originPatterns = "*")
 @RequestMapping("/clients")
 public class VipClientHttpController {
 

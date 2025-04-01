@@ -12,7 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.sql.*;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(allowCredentials = "true", originPatterns = "*")
 @RequestMapping("/users")
 public class UserHttpController {
 

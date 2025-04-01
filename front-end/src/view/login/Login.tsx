@@ -22,12 +22,13 @@ function Login() {
                 body: JSON.stringify(user),
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                },
+                credentials: "include"
             });
         if (response.status === 201){
             navigate('/');
         }else{
-            alert("Invalid login credentails, try again");
+            alert("Invalid login credentials, try again");
             txtUsernameRef.current!.select();
             txtUsernameRef.current!.focus();
         }
