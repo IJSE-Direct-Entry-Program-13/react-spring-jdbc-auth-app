@@ -1,6 +1,7 @@
 import './App.css'
 import {createBrowserRouter, redirect, RouteObject, RouterProvider} from "react-router";
 import Login from "./view/login/Login.tsx";
+import Main from "./view/main/Main.tsx";
 
 type Routes = RouteObject[];
 const routes: Routes = [
@@ -10,12 +11,12 @@ const routes: Routes = [
             const response =
                 await fetch('http://localhost:8080/app/clients', {credentials: 'include'});
             if (response.status === 200){
-                //
+                return {clients: await response.json()};
             }else{
                 return redirect('/login');
             }
         },
-        element: <h1>Main</h1>
+        Component: Main
     },
     {
         path: 'login',
