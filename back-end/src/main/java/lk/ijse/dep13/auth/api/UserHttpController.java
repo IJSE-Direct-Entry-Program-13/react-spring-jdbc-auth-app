@@ -22,9 +22,12 @@ public class UserHttpController {
         try(Connection connection = DriverManager
                 .getConnection("jdbc:postgresql://localhost:5432/dep13_auth_app",
                         "postgres", "psql");
-            Statement stm = connection.createStatement()) {
-            ResultSet rst = stm.executeQuery("SELECT * FROM \"user\" WHERE username='%s' AND password='%s'"
-                    .formatted(user.username(), user.password()));
+            PreparedStatement stm = connection
+                    .prepareStatement("SELECT * FROM \"user\" WHERE username=? AND password=?")) {
+            // This will sanitize inputs
+            stm.setString(1, user.username());
+            stm.setString(2, user.password());
+            ResultSet rst = stm.executeQuery();
             if (rst.next()){
                 request.getSession();
                 return "logged in";
